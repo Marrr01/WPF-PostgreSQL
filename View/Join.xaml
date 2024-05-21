@@ -1,0 +1,244 @@
+﻿<UserControl x:Class="WpfPostgre.Join"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfPostgre"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="200"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition MinWidth="200"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="200"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" MinHeight="200"/>
+        </Grid.RowDefinitions>
+
+        <!--Горизонтальный разделитель-->
+        <GridSplitter Grid.ColumnSpan="3"
+                      Grid.Row="1"
+                      HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Center"
+                      Height="5">
+        </GridSplitter>
+
+        <!--Вертикальный разделитель-->
+        <GridSplitter Grid.Column="1"
+                      Grid.Row="0"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Stretch"
+                      Width="5">
+        </GridSplitter>
+
+        <!--Слева сверху-->
+        <DockPanel LastChildFill="True"
+                   Grid.Column="0"
+                   Grid.Row="0">
+
+            <TextBlock Text="База данных, мужчины:"
+                       FontWeight="Medium"
+                       DockPanel.Dock="Top"
+                       Margin="10">
+            </TextBlock>
+
+            <TextBlock Text="{Binding MalesCount}"
+                       FontWeight="Medium"
+                       DockPanel.Dock="Bottom"
+                       Margin="10,0,10,10">
+            </TextBlock>
+
+            <DataGrid ItemsSource="{Binding Males}"
+                      CanUserSortColumns="True"
+                      IsReadOnly="True"
+                      AutoGenerateColumns="True"
+                      ColumnWidth="*"
+                      Margin="10,0,10,10">
+            </DataGrid>
+
+        </DockPanel>
+
+        <!--Справа сверху-->
+        <DockPanel Grid.Column="2"
+                   Grid.Row="0"
+                   LastChildFill="True">
+
+            <TextBlock Text="База данных, компании:"
+                       FontWeight="Medium"
+                       DockPanel.Dock="Top"
+                       Margin="10">
+            </TextBlock>
+
+            <TextBlock Text="{Binding CompaniesCount}"
+                       FontWeight="Medium"
+                       DockPanel.Dock="Bottom"
+                       Margin="10,0,10,10">
+            </TextBlock>
+
+            <DataGrid ItemsSource="{Binding Companies}"
+                      CanUserSortColumns="True"
+                      IsReadOnly="True"
+                      AutoGenerateColumns="True"
+                      ColumnWidth="*"
+                      Margin="10,0,10,10">
+            </DataGrid>
+
+        </DockPanel>
+
+        <!--Снизу-->
+        <TabControl Grid.ColumnSpan="3"
+                    Grid.Row="2"
+                    Margin="10">
+
+            <!--INNER JOIN-->
+            <TabItem>
+
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="3">INNER JOIN</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <DockPanel LastChildFill="True">
+
+                        <TextBlock Text="Результат:"
+                                   FontWeight="Medium"
+                                   DockPanel.Dock="Top"
+                                   Margin="10">
+                        </TextBlock>
+
+                        <TextBlock Text="{Binding InnerJoinCount}"
+                                   FontWeight="Medium"
+                                   DockPanel.Dock="Bottom"
+                                   Margin="10,0,10,10">
+                        </TextBlock>
+
+                        <DataGrid ItemsSource="{Binding InnerJoin}"
+                                  CanUserSortColumns="True"
+                                  IsReadOnly="True"
+                                  AutoGenerateColumns="True"
+                                  ColumnWidth="*"
+                                  Margin="10,0,10,10">
+                        </DataGrid>
+
+                    </DockPanel>
+                </TabItem.Content>
+            </TabItem>
+
+            <!--LEFT OUTER JOIN-->
+            <TabItem>
+                
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="3">LEFT OUTER JOIN</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                
+                <TabItem.Content>
+                    <DockPanel LastChildFill="True">
+
+                        <TextBlock Text="Результат:"
+                                   FontWeight="Medium"
+                                   DockPanel.Dock="Top"
+                                   Margin="10">
+                        </TextBlock>
+
+                        <TextBlock Text="{Binding LeftOuterJoinCount}"
+                                   FontWeight="Medium"
+                                   DockPanel.Dock="Bottom"
+                                   Margin="10,0,10,10">
+                        </TextBlock>
+
+                        <DataGrid ItemsSource="{Binding LeftOuterJoin}"
+                                  CanUserSortColumns="True"
+                                  IsReadOnly="True"
+                                  AutoGenerateColumns="True"
+                                  ColumnWidth="*"
+                                  Margin="10,0,10,10">
+                        </DataGrid>
+
+                    </DockPanel>
+                </TabItem.Content>
+            </TabItem>
+
+            <!--RIGHT OUTER JOIN-->
+            <TabItem>
+
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="3">RIGHT OUTER JOIN</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <DockPanel LastChildFill="True">
+
+                        <TextBlock Text="Результат:"
+                                   FontWeight="Medium"
+                                   DockPanel.Dock="Top"
+                                   Margin="10">
+                        </TextBlock>
+
+                        <TextBlock Text="{Binding RightOuterJoinCount}"
+                                   FontWeight="Medium"
+                                   DockPanel.Dock="Bottom"
+                                   Margin="10,0,10,10">
+                        </TextBlock>
+
+                        <DataGrid ItemsSource="{Binding RightOuterJoin}"
+                                  CanUserSortColumns="True"
+                                  IsReadOnly="True"
+                                  AutoGenerateColumns="True"
+                                  ColumnWidth="*"
+                                  Margin="10,0,10,10">
+                        </DataGrid>
+
+                    </DockPanel>
+                </TabItem.Content>
+            </TabItem>
+
+            <!--FULL OUTER JOIN-->
+            <TabItem>
+
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="3">FULL OUTER JOIN</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <DockPanel LastChildFill="True">
+
+                        <TextBlock Text="Результат:"
+                                   FontWeight="Medium"
+                                   DockPanel.Dock="Top"
+                                   Margin="10">
+                        </TextBlock>
+
+                        <TextBlock Text="{Binding FullOuterJoinCount}"
+                                   FontWeight="Medium"
+                                   DockPanel.Dock="Bottom"
+                                   Margin="10,0,10,10">
+                        </TextBlock>
+
+                        <DataGrid ItemsSource="{Binding FullOuterJoin}"
+                                  CanUserSortColumns="True"
+                                  IsReadOnly="True"
+                                  AutoGenerateColumns="True"
+                                  ColumnWidth="*"
+                                  Margin="10,0,10,10">
+                        </DataGrid>
+
+                    </DockPanel>
+                </TabItem.Content>
+            </TabItem>
+            
+        </TabControl>
+    </Grid>
+</UserControl>
